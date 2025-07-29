@@ -147,10 +147,6 @@ Após a instalação, seu Mini ERP estará acessível em:
         └── docker-compose.yml      # Definição dos serviços Docker
         ```
 
-## 🤝 Contribuindo
-
-Se você quiser contribuir com este projeto, sinta-se à vontade para abrir "issues" ou enviar "pull requests".
-
 ## 📄 Licença
 
 Este projeto está licenciado sob a Licença MIT.
