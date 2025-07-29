@@ -47,7 +47,7 @@ use App\Model\ItemEstoque;
                         <form action="/carrinho/adicionar" method="POST" class="d-inline-block me-2">
                             <input type="hidden" name="id_produto" value="<?php echo htmlspecialchars($produto->getIdProduto() ?? ''); ?>">
                             <input type="number" name="quantidade" value="1" min="1" class="form-control form-control-sm d-inline-block" style="width: 60px;">
-                            <button type="submit" class="btn btn-sm btn-primary ms-1" <?php echo ($estoqueTotalProduto <= 0 ? 'disabled' : ''); ?>>Comprar</button>
+                            <button type="submit" class="btn btn-sm  btn-secondary ms-1" <?php echo ($estoqueTotalProduto <= 0 ? 'disabled' : ''); ?>>Comprar</button>
                         </form>
                         <a href="/produtos/editar/<?php echo htmlspecialchars($produto->getIdProduto() ?? ''); ?>" class="btn btn-sm btn-info me-2">Editar</a>
                         <form action="/produtos/deletar/<?php echo htmlspecialchars($produto->getIdProduto() ?? ''); ?>" method="POST" style="display:inline-block;">
