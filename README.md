@@ -58,7 +58,7 @@ Certifique-se de ter os seguintes softwares instalados em sua máquina:
 
 1.  **Clone o Repositório:**
     
-    git clone [https://github.com/SeuUsuario/NomeDoSeuRepo.git](https://github.com/SeuUsuario/NomeDoSeuRepo.git) # Altere para o seu repositório
+    git clone https://github.com/guinhorl/Mini-ERP.git
     cd NomeDoSeuRepo
     
 
