@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # Serviço de Banco de Dados MySQL
+  db:
+    image: mysql:8.0 # Usando MySQL 8.0
+    container_name: mini_erp_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password # Senha do usuário root (MUDAR EM PRODUÇÃO!)
+      MYSQL_DATABASE: mini_erp_db # Nome do banco de dados
+      MYSQL_USER: user_erp # Usuário do banco de dados
+      MYSQL_PASSWORD: password_erp # Senha do usuário (MUDAR EM PRODUÇÃO!)
+    ports:
+      - "3306:3306" # Mapeia a porta 3306 do host para a porta 3306 do contêiner
+    volumes:
+      - db_data:/var/lib/mysql # Persiste os dados do banco de dados
+
+  # Serviço PHP-FPM
+  php:
+    build:
+      context: . # O contexto para construir a imagem é o diretório atual (mini_erp_php/)
+      dockerfile: docker/php/Dockerfile # O Dockerfile para este serviço
+    container_name: mini_erp_php
+    volumes:
+      - .:/var/www/html # Mapeia o diretório atual do projeto para /var/www/html dentro do contêiner
+    depends_on:
+      - db # Garante que o DB inicie antes do PHP
+
+  # Serviço Nginx (servidor web)
+  nginx:
+    image: nginx:stable-alpine # Imagem Nginx leve
+    container_name: mini_erp_nginx
+    ports:
+      - "80:80" # Mapeia a porta 80 do host para a porta 80 do contêiner
+    volumes:
+      - .:/var/www/html # Mapeia o diretório do projeto
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf # Arquivo de configuração principal do Nginx
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf # Configuração do site
+    depends_on:
+      - php # Garante que o PHP inicie antes do Nginx
+
+volumes:
+  db_data: # Define um volume para persistir os dados do banco de dados

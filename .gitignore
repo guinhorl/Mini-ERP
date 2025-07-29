@@ -1,0 +1,42 @@
+# .gitignore
+
+# Arquivos de Ambiente
+.env
+.env.local
+.env.*.local
+
+# Dependências do Composer
+/vendor/
+/composer.lock
+
+
+# Logs da Aplicação
+/logs/
+*.log
+
+# Cache e Diretórios Temporários
+/tmp/
+/cache/
+*.tmp
+*.temp
+
+# Arquivos de Testes
+/test_produto.php
+
+# Arquivos de Cache e Dados do Docker
+# O volume db_data não cria uma pasta visível diretamente na raiz,
+# mas outros caches ou dados do Docker Desktop podem aparecer.
+.dockerignore
+.docker/ # Pasta oculta do Docker Desktop em alguns sistemas
+
+# Arquivos de IDE
+.idea/
+*.iml
+
+# Arquivos de Binários e Build (se houver)
+*.phar
+*.exe
+*.dll
+*.so
+*.o
+*.obj
