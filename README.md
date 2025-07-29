@@ -57,14 +57,16 @@ Certifique-se de ter os seguintes softwares instalados em sua máquina:
 ### Instalação
 
 1.  **Clone o Repositório:**
-    
+    ```
     git clone https://github.com/guinhorl/Mini-ERP.git
     cd NomeDoSeuRepo
+    ```
     
 
 2.  **Configurar Variáveis de Ambiente:**
     Crie um arquivo `.env` na raiz do projeto (na mesma pasta do `docker-compose.yml`) e adicione as seguintes variáveis:
 
+    ```
     # .env
     DB_HOST=db
     DB_NAME=mini_erp_db
@@ -73,30 +75,33 @@ Certifique-se de ter os seguintes softwares instalados em sua máquina:
     MYSQL_ROOT_PASSWORD=root_password
     APP_ENV=development
     APP_DEBUG=true
+    
+    
+    ```
 
 
 3.  **Subir os Contêineres Docker:**
     Na raiz do projeto, execute o Docker Compose para construir as imagens e iniciar os serviços:
-
+    ```
     docker-compose up --build -d
     
     # Este comando pode levar alguns minutos na primeira execução, pois baixará as imagens e construirá os contêineres.
-
+    ```
 4.  **Instalar Dependências PHP (via Composer):**
     Com o contêiner PHP em execução, instale as dependências do Composer dentro dele:
-
+    ```
     docker-compose exec php composer install
-
+    ```
 5.  **Executar Migrações do Banco de Dados:**
     Crie as tabelas do banco de dados executando os scripts de migração:
-
+    ```
     docker-compose exec php php database/migrate.php
-
+    ```
 6.  **Popular o Banco de Dados com Dados Iniciais (Opcional):**
     Adicione alguns dados de exemplo para teste:
-
+    ```
     docker-compose exec php php database/seed.php
-
+    ```
 ## 🚀 Utilização
 
 Após a instalação, seu Mini ERP estará acessível em:
@@ -120,27 +125,27 @@ Após a instalação, seu Mini ERP estará acessível em:
 
 ## 📂 Estrutura do Projeto
 
-
-mini_erp_php/
-├── public/                 # Document root do servidor web
-│   └── index.php           # Front controller
-├── src/                    # Código fonte da aplicação
-│   ├── Config/             # Configurações de conexão (Database.php)
-│   ├── Controller/         # Camada de Controladores (ProdutoController.php, PedidoController.php, etc.)
-│   ├── Model/              # Camada de Modelos (Produto.php, Pedido.php, ItemPedido.php, etc.)
-│   └── View/               # Camada de Views (templates HTML/PHP)
-│       └── templates/
-│           ├── cupons/
-│           ├── estoque/
-│           ├── pedidos/
-│           └── produtos/
-├── docker/                 # Arquivos de configuração Docker
-├── database/               # Migrações e seeders SQL
-├── vendor/                 # Dependências do Composer
-├── .env                    # Variáveis de ambiente
-├── composer.json           # Configuração do Composer
-└── docker-compose.yml      # Definição dos serviços Docker
-
+        ```
+        mini_erp_php/
+        ├── public/                 # Document root do servidor web
+        │   └── index.php           # Front controller
+        ├── src/                    # Código fonte da aplicação
+        │   ├── Config/             # Configurações de conexão (Database.php)
+        │   ├── Controller/         # Camada de Controladores (ProdutoController.php, PedidoController.php, etc.)
+        │   ├── Model/              # Camada de Modelos (Produto.php, Pedido.php, ItemPedido.php, etc.)
+        │   └── View/               # Camada de Views (templates HTML/PHP)
+        │       └── templates/
+        │           ├── cupons/
+        │           ├── estoque/
+        │           ├── pedidos/
+        │           └── produtos/
+        ├── docker/                 # Arquivos de configuração Docker
+        ├── database/               # Migrações e seeders SQL
+        ├── vendor/                 # Dependências do Composer
+        ├── .env                    # Variáveis de ambiente
+        ├── composer.json           # Configuração do Composer
+        └── docker-compose.yml      # Definição dos serviços Docker
+        ```
 
 ## 🤝 Contribuindo
 
@@ -152,5 +157,5 @@ Este projeto está licenciado sob a Licença MIT.
 
 ## ✉️ Contato
 
-Desenvolvido por: **Wagner Ramos Lima**
+Desenvolvido por: **Wagner Ramos Lima** <br>
 wagnerramosl@yahoo.com.br | https://www.linkedin.com/in/wagnerramoslima/
